@@ -119,7 +119,7 @@ body > div:first-of-type p {
 /* Section Styling */
 section {
   padding: 6rem 2rem;
-  max-width: 1500px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -442,3 +442,4 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
