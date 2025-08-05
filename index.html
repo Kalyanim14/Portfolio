@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantramurthi Kalyani Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+        <a href="#experience">Experience & Certificates</a>
+    </nav>
+    <div style="background-image: url(images/n72Fq9.jpg);">
+        <img src="images/kalyani.jpeg" alt="Mantramurthi Kalyani" class="profile-pic">
+        <h1 style="color: #0c50f0;">Mantramurthi Kalyani</h1>
+        <p>Final Year CSE Student | Python & Web Developer | Fast Learner</p>
+    </div>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a highly motivated final-year Computer Science and Engineering student with a passion for Python, web development, and learning new technologies.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li><strong> Library Management System - Django, HTML, CSS, SQLite:</strong> A web-based system to manage book inventory, issuing, returns, and tracking of students and books.</li>
+            <li><strong> Simple Posting Website - JSX ReactJS, Python (Flask):</strong>  A basic web platform that allows users to create and display content posts through a dynamic interface.</li>
+            <li><strong> Data Hiding using Steganography - HTML, CSS, Python (Flask):</strong> A secure image steganography system where users can embed secret messages inside images and extract them using password-protected access.</li>
+            <li><strong> Inventory Management System - Python, Tkinter:</strong> A Python desktop application with a Tkinter GUI for managing product inventory, including add/edit/delete features and user login.</li>
+            <li><strong>  ATM Banking System Simulator - Python (OOP), Tkinter, JSON:</strong> A secure ATM simulation built with Python and Tkinter featuring PIN authentication, encrypted transactions, and PDF mini-statements</li>
+        </ul>
+    </section>
+
+     
+    <section id="skills">
+        <h2>Technical skills</h2>
+        <ul>
+            <li> Frontend Languages: HTML, CSS, JavaScript, ReactJS, JSX</li>
+            <li> Backend Languages: C, Java, Python, MySQL, SQL</li>
+            <li> Tools & Platforms: Microsoft Word, Excel, PowerPoint, Git, GitHub, Docker, Power BI</li>
+        </ul>
+    </section>
+
+    <section id="internships">
+        <h2>Experience</h2>
+        <ul>
+            <li><strong> Cybersecurity Internship – Edunet foundation:  Jan - Feb 2025</strong>  Focused on network security, threat mitigation, cybersecurity principles, and data hiding.
+             Included real-world case studies and vulnerability analysis.</li>
+            <li><strong> Python Programming Internship – CodSoft:  Sep - Oct 2024</strong>  Created small automation scripts in Python.
+             Practiced loops, conditionals, functions, and basic data structures.</li>
+            
+        </ul>
+    </section>
+
+    <section id="experience">
+        <h2>Certificates</h2>
+        <ul>
+            <li> 1. Cybersecurity Fundamentals Badge -IBM SkillsBuild</li>
+            <li>2. Communication Skills Certificate -TCS iON</li>
+            <li> 3. Python Programming Certificate – OPENEDG</li>
+            <li> 4. Consulting Virtual Experience Program Certificate – Accenture (via Forage)</li>
+            <li>  5. Cloud Computing Basics Badge – AWS (via Credly)</li>
+        </ul>
+    </section>
+    <section id="resume">
+        <h2>Resume</h2>
+        <p><a href="images/Kalyani Mantramurthi Resume.pdf" download>Download Resume (PDF)</a></p>
+    </section>
+
+    <section id="contact">
+    <h2>Contact</h2>
+    
+    <div class="contact-container">
+        <!-- Existing contact info -->
+        <div class="contact-info">
+            <img src="images/email-icon.webp" alt="Email" class="icon">
+            <span>kalyanimantramurthi@gmail.com</span>
+        </div>
+        <div class="contact-info">
+            <img src="images/github-icon.webp" alt="GitHub" class="icon">
+            <a href="https://github.com/kalyani">GitHub</a>
+        </div>
+
+        <!-- Add this contact form -->
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+            <p id="form-status"></p>
+        </form>
+    </div>
+</section>
+
+    
+
+
+    <footer>
+        <p>&copy; 2025 Mantramurthi Kalyani. All rights reserved.</p>
+    </footer>
+
+    <script>
+        
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formStatus = document.getElementById('form-status');
+        formStatus.textContent = 'Sending message...';
+        formStatus.style.color = '#4a42e8';
+        
+        // Using Formspree (free service) - replace with your email
+        const formData = new FormData(this);
+        fetch('https://formspree.io/f/your-formspree-id', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                formStatus.textContent = 'Message sent successfully!';
+                formStatus.style.color = 'green';
+                document.getElementById('contactForm').reset();
+            } else {
+                throw new Error('Failed to send message');
+            }
+        })
+        .catch(error => {
+            formStatus.textContent = 'Error sending message. Please try again.';
+            formStatus.style.color = 'red';
+            console.error('Error:', error);
+        });
+    });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute("href")).scrollIntoView({
+                    behavior: "smooth"
+                });
+            });
+        });
+    </script>
+    
+</body>
+
+</html>
