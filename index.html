@@ -111,9 +111,10 @@
         <p>&copy; 2025 Mantramurthi Kalyani. All rights reserved.</p>
     </footer>
 
-    <script> document.getElementById("contact-form").addEventListener("submit", function (e) { e.preventDefault(); const form = e.target; const formData = new FormData(form); fetch("https://formspree.io/f/abcdxyz", { method: "POST", headers: { Accept: "application/json", }, body: formData, }) .then((response) => { if (response.ok) { alert("Message sent successfully!"); form.reset(); } else { alert("Oops! There was a problem sending your message."); } }) .catch((error) => { console.error("Error:", error); alert("Oops! There was a problem sending your message."); }); }); </script>
+    <script src="form.JS"></script>
     
 </body>
 
 </html>
+
 
