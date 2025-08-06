@@ -98,8 +98,8 @@ h1 {
 }
 
 .profile-pic {
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
   object-fit: cover;
   border-radius: 50%;
   border: 6px solid var(--primary);
@@ -442,3 +442,4 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
