@@ -53,7 +53,7 @@
       <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjI4MCIgdmlld0JveD0iMCAwIDI4MCAyODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNjY3ZWVhIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZjA5M2ZiIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PGNpcmNsZSBjeD0iMTQwIiBjeT0iMTQwIiByPSIxNDAiIGZpbGw9InVybCgjZ3JhZGllbnQpIi8+PHRleHQgeD0iMTQwIiB5PSIxNTAiIGZvbnQtZmFtaWx5PSJJbnRlciIgZm9udC1zaXplPSI0OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1LPC90ZXh0Pjwvc3ZnPg==" alt="Mantramurthi Kalyani" class="profile-pic" />
       
       <h1 class="hero-title">Mantramurthi Kalyani</h1>
-      <p class="hero-subtitle">Final Year CSE Student • Python & Web Developer • Fast Learner</p>
+      <p class="hero-subtitle">Final Year CSE Student • Python & Web Developer • Data Analyst</p>
       
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary">View My Work</a>
@@ -333,7 +333,7 @@
     gsap.to(loader, {
       opacity: 0,
       duration: 0.5,
-      delay: performance.now() < 500 ? 0.5 : 0, // Prevent flashing on fast connections
+      delay: performance.now() < 500 ? 0.5 : 0,
       onComplete: function () {
         loader.style.display = 'none';
         initAnimations();
@@ -359,13 +359,13 @@
   // Cursor hover effects
   document.querySelectorAll('a, button, .project-card, .skill-category').forEach(el => {
     el.addEventListener('mouseenter', () => {
-      gsap.to(cursor, { scale: 1.5, duration: 0.3 });
-      gsap.to(cursorFollower, { scale: 2, duration: 0.3 });
+      gsap.to(cursor, { scale: 1.5, duration: 0.3, clearProps: 'all' });
+      gsap.to(cursorFollower, { scale: 2, duration: 0.3, clearProps: 'all' });
     });
 
     el.addEventListener('mouseleave', () => {
-      gsap.to(cursor, { scale: 1, duration: 0.3 });
-      gsap.to(cursorFollower, { scale: 1, duration: 0.3 });
+      gsap.to(cursor, { scale: 1, duration: 0.3, clearProps: 'all' });
+      gsap.to(cursorFollower, { scale: 1, duration: 0.3, clearProps: 'all' });
     });
   });
 
@@ -382,7 +382,8 @@
       scale: 0,
       rotation: 180,
       duration: 1,
-      ease: 'back.out(1.7)'
+      ease: 'back.out(1.7)',
+      clearProps: 'all'
     });
 
     gsap.from('.hero-title', {
@@ -390,7 +391,8 @@
       opacity: 0,
       duration: 1,
       delay: 0.3,
-      ease: 'power3.out'
+      ease: 'power3.out',
+      clearProps: 'all'
     });
 
     gsap.from('.hero-subtitle', {
@@ -398,7 +400,8 @@
       opacity: 0,
       duration: 1,
       delay: 0.6,
-      ease: 'power3.out'
+      ease: 'power3.out',
+      clearProps: 'all'
     });
 
     gsap.from('.hero-cta .btn', {
@@ -407,7 +410,8 @@
       duration: 1,
       delay: 0.9,
       stagger: 0.2,
-      ease: 'power3.out'
+      ease: 'power3.out',
+      clearProps: 'all'
     });
 
     // Floating shapes animation
@@ -416,8 +420,7 @@
       duration: 3,
       ease: 'power2.inOut',
       yoyo: true,
-      repeat: -1,
-      stagger: 0.5
+      repeat: -1
     });
 
     // Navigation animation
@@ -426,7 +429,8 @@
       opacity: 0,
       duration: 1,
       delay: 1.2,
-      ease: 'power3.out'
+      ease: 'power3.out',
+      clearProps: 'all'
     });
 
     // Section animations
@@ -441,7 +445,8 @@
           start: 'top 80%',
           end: 'bottom 20%',
           toggleActions: 'play none none reverse'
-        }
+        },
+        onComplete: () => gsap.set(section, { opacity: 1 })
       });
     });
 
@@ -457,7 +462,8 @@
           trigger: card,
           start: 'top 85%',
           toggleActions: 'play none none reverse'
-        }
+        },
+        onComplete: () => gsap.set(card, { opacity: 1 })
       });
     });
 
@@ -472,7 +478,8 @@
           trigger: card,
           start: 'top 85%',
           toggleActions: 'play none none reverse'
-        }
+        },
+        onComplete: () => gsap.set(card, { opacity: 1 })
       });
 
       // Hover animations
@@ -481,7 +488,8 @@
           y: -15,
           scale: 1.02,
           duration: 0.4,
-          ease: 'power2.out'
+          ease: 'power2.out',
+          clearProps: 'all'
         });
       });
 
@@ -490,7 +498,8 @@
           y: 0,
           scale: 1,
           duration: 0.4,
-          ease: 'power2.out'
+          ease: 'power2.out',
+          clearProps: 'all'
         });
       });
     });
@@ -507,7 +516,8 @@
           trigger: skill,
           start: 'top 85%',
           toggleActions: 'play none none reverse'
-        }
+        },
+        onComplete: () => gsap.set(skill, { opacity: 1 })
       });
 
       // Skill tags animation
@@ -521,7 +531,8 @@
           trigger: skill,
           start: 'top 80%',
           toggleActions: 'play none none reverse'
-        }
+        },
+        onComplete: () => gsap.set(skill.querySelectorAll('.skill-tag'), { opacity: 1 })
       });
     });
 
@@ -537,7 +548,8 @@
           trigger: item,
           start: 'top 85%',
           toggleActions: 'play none none reverse'
-        }
+        },
+        onComplete: () => gsap.set(item, { opacity: 1 })
       });
     });
 
@@ -551,7 +563,8 @@
         trigger: '.contact-container',
         start: 'top 80%',
         toggleActions: 'play none none reverse'
-      }
+      },
+      onComplete: () => gsap.set('.contact-container', { opacity: 1 })
     });
 
     // Form elements animation
@@ -565,7 +578,8 @@
         trigger: '.contact-form',
         start: 'top 80%',
         toggleActions: 'play none none reverse'
-      }
+      },
+      onComplete: () => gsap.set('.form-group', { opacity: 1 })
     });
 
     // Button hover animations
@@ -575,7 +589,8 @@
           scale: 1.05,
           y: -3,
           duration: 0.3,
-          ease: 'power2.out'
+          ease: 'power2.out',
+          clearProps: 'all'
         });
       });
 
@@ -584,24 +599,13 @@
           scale: 1,
           y: 0,
           duration: 0.3,
-          ease: 'power2.out'
+          ease: 'power2.out',
+          clearProps: 'all'
         });
       });
     });
 
-    // Parallax effect (use dedicated div instead of ::before)
-    gsap.to('.parallax-bg', {
-      y: -50,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: 'body',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true
-      }
-    });
-
-    // Text reveal animations
+    // Smooth scrolling for section titles
     gsap.utils.toArray('.section-title').forEach(title => {
       gsap.from(title, {
         y: 50,
@@ -612,7 +616,8 @@
           trigger: title,
           start: 'top 80%',
           toggleActions: 'play none none reverse'
-        }
+        },
+        onComplete: () => gsap.set(title, { opacity: 1 })
       });
     });
 
@@ -627,7 +632,8 @@
           trigger: subtitle,
           start: 'top 80%',
           toggleActions: 'play none none reverse'
-        }
+        },
+        onComplete: () => gsap.set(subtitle, { opacity: 1 })
       });
     });
   }
@@ -650,28 +656,20 @@
   // Form submission (demo only)
   document.getElementById('contactForm').addEventListener('submit', function (e) {
     e.preventDefault();
-
     const formStatus = document.getElementById('form-status');
     const submitBtn = this.querySelector('button[type="submit"]');
 
-    // Animate button
     gsap.to(submitBtn, {
       scale: 0.95,
       duration: 0.1,
       yoyo: true,
-      repeat: 1
+      repeat: 1,
+      clearProps: 'all'
     });
 
-    // Show success message
     formStatus.innerHTML = '<span style="color: var(--accent);">✓ Message sent (demo only)</span>';
-    gsap.from(formStatus, {
-      y: 20,
-      opacity: 0,
-      duration: 0.5,
-      ease: 'power3.out'
-    });
+    gsap.from(formStatus, { y: 20, opacity: 0, duration: 0.5, ease: 'power3.out' });
 
-    // Reset form
     setTimeout(() => {
       this.reset();
       formStatus.innerHTML = '';
@@ -682,11 +680,9 @@
   if (window.innerWidth <= 768) {
     cursor.style.display = 'none';
     cursorFollower.style.display = 'none';
-
     ScrollTrigger.defaults({ markers: false, once: true });
   }
 
-  // Refresh ScrollTrigger on resize
   window.addEventListener('resize', () => {
     ScrollTrigger.refresh();
   });
