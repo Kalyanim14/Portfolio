@@ -1,123 +1,695 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mantramurthi Kalyani Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mantramurthi Kalyani - Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  
 </head>
-
 <body>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#resume">Resume</a>
-        <a href="#contact">Contact</a>
-        <a href="#experience">Experience & Certificates</a>
-    </nav>
-    <div style="background-image: url(images/n72Fq9.jpg);">
-        <img src="images/kalyani.jpeg" alt="Mantramurthi Kalyani" class="profile-pic">
-        <h1 style="color: #0c50f0;">Mantramurthi Kalyani</h1>
-        <p>Final Year CSE Student | Python & Web Developer | Fast Learner</p>
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-ring"></div>
+      <h3 style="color: var(--text-secondary);">Loading Portfolio...</h3>
     </div>
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I am a highly motivated final-year Computer Science and Engineering student with a passion for Python, web development, and learning new technologies.</p>
-    </section>
+  </div>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li><strong> Library Management System - Django, HTML, CSS, SQLite:</strong> A web-based system to manage book inventory, issuing, returns, and tracking of students and books.</li>
-            <li><strong> Simple Posting Website - JSX ReactJS, Python (Flask):</strong>  A basic web platform that allows users to create and display content posts through a dynamic interface.</li>
-            <li><strong> Data Hiding using Steganography - HTML, CSS, Python (Flask):</strong> A secure image steganography system where users can embed secret messages inside images and extract them using password-protected access.</li>
-            <li><strong> Inventory Management System - Python, Tkinter:</strong> A Python desktop application with a Tkinter GUI for managing product inventory, including add/edit/delete features and user login.</li>
-            <li><strong>  ATM Banking System Simulator - Python (OOP), Tkinter, JSON:</strong> A secure ATM simulation built with Python and Tkinter featuring PIN authentication, encrypted transactions, and PDF mini-statements</li>
-        </ul>
-    </section>
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-progress" id="scrollProgress"></div>
+  </div>
 
-     
-    <section id="skills">
-        <h2>Technical skills</h2>
-        <ul>
-            <li> Frontend Languages: HTML, CSS, JavaScript, ReactJS, JSX</li>
-            <li> Backend Languages: C, Java, Python, MySQL, SQL</li>
-            <li> Tools & Platforms: Microsoft Word, Excel, PowerPoint, Git, GitHub, Docker, Power BI</li>
-        </ul>
-    </section>
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
 
-    <section id="internships">
-        <h2>Experience</h2>
-        <ul>
-            <li><strong> Cybersecurity Internship – Edunet foundation:  Jan - Feb 2025</strong>  Focused on network security, threat mitigation, cybersecurity principles, and data hiding.
-             Included real-world case studies and vulnerability analysis.</li>
-            <li><strong> Python Programming Internship – CodSoft:  Sep - Oct 2024</strong>  Created small automation scripts in Python.
-             Practiced loops, conditionals, functions, and basic data structures.</li>
-            
-        </ul>
-    </section>
+  <!-- Navigation -->
+  <div class="nav-container">
+    <nav class="site-nav">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+  </div>
 
-    <section id="experience">
-        <h2>Certificates</h2>
-        <ul>
-            <li> Cybersecurity Fundamentals Badge -IBM SkillsBuild</li>
-            <li> Communication Skills Certificate -TCS iON</li>
-            <li> Python Programming Certificate – OPENEDG</li>
-            <li> Consulting Virtual Experience Program Certificate – Accenture (via Forage)</li>
-            <li> Cloud Computing Basics Badge – AWS (via Credly)</li>
-            <li> GenAI Mastery Workshop - OpenAI x NxtWave</li>
-        </ul>
-    </section>
-    <section id="resume">
-        <h2>Resume</h2>
-        <p><a href="images/Kalyani Mantramurthi Resume.pdf" download>Download Resume (PDF)</a></p>
-    </section>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    
+    <div class="hero-content">
+      <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgwIiBoZWlnaHQ9IjI4MCIgdmlld0JveD0iMCAwIDI4MCAyODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNjY3ZWVhIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZjA5M2ZiIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PGNpcmNsZSBjeD0iMTQwIiBjeT0iMTQwIiByPSIxNDAiIGZpbGw9InVybCgjZ3JhZGllbnQpIi8+PHRleHQgeD0iMTQwIiB5PSIxNTAiIGZvbnQtZmFtaWx5PSJJbnRlciIgZm9udC1zaXplPSI0OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1LPC90ZXh0Pjwvc3ZnPg==" alt="Mantramurthi Kalyani" class="profile-pic" />
+      
+      <h1 class="hero-title">Mantramurthi Kalyani</h1>
+      <p class="hero-subtitle">Final Year CSE Student • Python & Web Developer • Fast Learner</p>
+      
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact">
-    <h2>Contact</h2>
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="section-header">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">Passionate developer with a drive for innovation and continuous learning</p>
+    </div>
+    
+    <div class="glass-card">
+      <div class="about-content">
+        <div class="about-image">
+          <div style="width: 100%; height: 300px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">Kalyani</div>
+        </div>
+        <div class="about-text">
+          <h3>Hello! I'm Kalyani</h3>
+          <p>I am a highly motivated final-year Computer Science and Engineering student with a passion for Python, web development, and learning new technologies. My journey in tech has been driven by curiosity and a constant desire to solve complex problems through elegant code.</p>
+          <p>I believe in the power of technology to transform ideas into reality. Whether it's building web applications, working with data, or exploring new frameworks, I approach each project with enthusiasm and attention to detail.</p>
+          <a href="https://www.linkedin.com/in/kalyani-mantramurthi-562720258/" class="btn btn-primary">Let's Connect</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Technical Skills</h2>
+      <p class="section-subtitle">Technologies and tools I work with</p>
+    </div>
+    
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3>Frontend</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">ReactJS</span>
+          <span class="skill-tag">JSX</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3>Backend & Database</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Django</span>
+          <span class="skill-tag">Flask</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">SQLite</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3>Tools & Technologies</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">MS Office</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">A showcase of my recent work and achievements</p>
+    </div>
+    
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Library Management System</h3>
+        <p>A comprehensive web-based system to manage book inventory, issuing, returns, and tracking of students and books with an intuitive admin interface.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Django</span>
+          <span class="tech-tag">HTML</span>
+          <span class="tech-tag">CSS</span>
+          <span class="tech-tag">SQLite</span>
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <h3>Simple Posting Website</h3>
+        <p>A dynamic web platform that allows users to create and display content posts through a modern, responsive interface with real-time updates.</p>
+        <div class="project-tech">
+          <span class="tech-tag">ReactJS</span>
+          <span class="tech-tag">JSX</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Flask</span>
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <h3>Data Hiding using Steganography</h3>
+        <p>A secure image steganography system where users can embed secret messages inside images and extract them using password-protected access.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Flask</span>
+          <span class="tech-tag">HTML</span>
+          <span class="tech-tag">CSS</span>
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <h3>Inventory Management System</h3>
+        <p>A Python desktop application with a modern Tkinter GUI for managing product inventory, featuring CRUD operations and user authentication.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Tkinter</span>
+          <span class="tech-tag">SQLite</span>
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <h3>ATM Banking System Simulator</h3>
+        <p>A secure ATM simulation built with Python and Tkinter featuring PIN authentication, encrypted transactions, and PDF mini-statements.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Tkinter</span>
+          <span class="tech-tag">JSON</span>
+          <span class="tech-tag">OOP</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Experience & Certificates</h2>
+      <p class="section-subtitle">My professional journey and achievements</p>
+    </div>
+    
+    <div class="experience-timeline">
+      <div class="experience-item">
+        <h3>Cybersecurity Internship</h3>
+        <div class="experience-date">Jan - Feb 2025</div>
+        <p><strong>Edunet Foundation</strong></p>
+        <p>Focused on network security, threat mitigation, cybersecurity principles, and data hiding techniques. Gained hands-on experience with security tools and methodologies.</p>
+      </div>
+      
+      <div class="experience-item">
+        <h3>Python Programming Internship</h3>
+        <div class="experience-date">Sep - Oct 2024</div>
+        <p><strong>CodSoft</strong></p>
+        <p>Created small automation scripts and practiced core programming concepts. Developed problem-solving skills and code optimization techniques.</p>
+      </div>
+    </div>
+
+    <div class="section-header" style="margin-top: 4rem;">
+      <h3 style="color: var(--primary); font-size: 2rem; margin-bottom: 3rem;">Certificates</h3>
+    </div>
+    
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4 style="color: var(--accent); margin-bottom: 1rem;">Cybersecurity Fundamentals Badge</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">IBM SkillsBuild</p>
+      </div>
+      
+      <div class="skill-category">
+        <h4 style="color: var(--accent); margin-bottom: 1rem;">Communication Skills Certificate</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">TCS iON</p>
+      </div>
+      
+      <div class="skill-category">
+        <h4 style="color: var(--accent); margin-bottom: 1rem;">Python Programming Certificate</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">OPENEDG</p>
+      </div>
+      
+      <div class="skill-category">
+        <h4 style="color: var(--accent); margin-bottom: 1rem;">Consulting Virtual Experience</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Accenture (Forage)</p>
+      </div>
+      
+      <div class="skill-category">
+        <h4 style="color: var(--accent); margin-bottom: 1rem;">Cloud Computing Basics Badge</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">AWS (Credly)</p>
+      </div>
+      
+      <div class="skill-category">
+        <h4 style="color: var(--accent); margin-bottom: 1rem;">GenAI Mastery Workshop</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">OpenAI x NxtWave</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-subtitle">Ready to start a conversation? I'd love to hear from you!</p>
+    </div>
     
     <div class="contact-container">
-        <!-- Existing contact info -->
-        <div class="contact-info">
-            <img src="images/email-icon.webp" alt="Email" class="icon">
-            <span>kalyanimantramurthi@gmail.com</span>
+      <div class="contact-info">
+        <h3 style="color: var(--primary); margin-bottom: 2rem; font-size: 1.5rem;">Get In Touch</h3>
+        
+        <div class="contact-item">
+          <i style="background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white;">✉</i>
+          <div>
+            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Email</h4>
+            <a href="mailto:kalyanimantramurthi@gmail.com" style="color: var(--text-secondary);">kalyanimantramurthi@gmail.com</a>
+          </div>
         </div>
-        <div class="contact-info">
-            <img src="images/github-icon.webp" alt="GitHub" class="icon">
-            <a href="https://github.com/kalyani">GitHub</a>
+        
+        <div class="contact-item">
+          <i style="background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white;">📁</i>
+          <div>
+            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">GitHub</h4>
+            <a href="https://github.com/Kalyanim14" target="_blank" style="color: var(--text-secondary);">github.com/Kalyanim14</a>
+          </div>
         </div>
-
-        <!-- Add this contact form -->
-        <form class="contact-form" id="contactForm">
-            <div class="form-group">
-                <input type="text" id="name" name="name" placeholder="Your Name" required>
-            </div>
-            <div class="form-group">
-                <input type="email" id="email" name="email" placeholder="Your Email" required>
-            </div>
-            <div class="form-group">
-                <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Send Message</button>
-            <p id="form-status"></p>
-        </form>
+        
+        <div class="contact-item">
+          <i style="background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white;">📄</i>
+          <div>
+            <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Resume</h4>
+            <a href="images/Kalyani Mantramurthi Resume.pdf" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Download PDF</a>
+          </div>
+        </div>
+      </div>
+      
+      <form class="contact-form" id="contactForm">
+        <h3 style="color: var(--primary); margin-bottom: 2rem; font-size: 1.5rem;">Send a Message</h3>
+        
+        <div class="form-group">
+          <input type="text" id="name" name="name" placeholder="Your Name" required class="form-control" />
+        </div>
+        
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder="Your Email" required class="form-control" />
+        </div>
+        
+        <div class="form-group">
+          <textarea id="message" name="message" placeholder="Your Message" rows="5" required class="form-control"></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+        <p id="form-status" style="margin-top: 1rem; text-align: center;"></p>
+      </form>
     </div>
-</section>
+  </section>
 
-    
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Mantramurthi Kalyani. All rights reserved.</p>
+      <div class="social-links">
+        <a href="mailto:kalyanimantramurthi@gmail.com" class="social-link">✉</a>
+        <a href="https://github.com/kalyani" target="_blank" class="social-link">⚡</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+  // GSAP Animations and Interactions
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
+  // Variables
+  let cursor = document.getElementById('cursor');
+  let cursorFollower = document.getElementById('cursorFollower');
+  let loader = document.getElementById('loader');
+  let scrollProgress = document.getElementById('scrollProgress');
 
-    <footer>
-        <p>&copy; 2025 Mantramurthi Kalyani. All rights reserved.</p>
-    </footer>
+  // Loading Animation
+  window.addEventListener('load', function () {
+    gsap.to(loader, {
+      opacity: 0,
+      duration: 0.5,
+      delay: performance.now() < 500 ? 0.5 : 0, // Prevent flashing on fast connections
+      onComplete: function () {
+        loader.style.display = 'none';
+        initAnimations();
+      }
+    });
+  });
 
-    <script src="form.JS"></script>
-    
-</body>
+  // Custom Cursor
+  document.addEventListener('mousemove', function (e) {
+    gsap.to(cursor, {
+      x: e.clientX - 10,
+      y: e.clientY - 10,
+      duration: 0.1
+    });
+
+    gsap.to(cursorFollower, {
+      x: e.clientX - 4,
+      y: e.clientY - 4,
+      duration: 0.3
+    });
+  });
+
+  // Cursor hover effects
+  document.querySelectorAll('a, button, .project-card, .skill-category').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      gsap.to(cursor, { scale: 1.5, duration: 0.3 });
+      gsap.to(cursorFollower, { scale: 2, duration: 0.3 });
+    });
+
+    el.addEventListener('mouseleave', () => {
+      gsap.to(cursor, { scale: 1, duration: 0.3 });
+      gsap.to(cursorFollower, { scale: 1, duration: 0.3 });
+    });
+  });
+
+  // Scroll Progress
+  window.addEventListener('scroll', function () {
+    let scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    scrollProgress.style.width = scrolled + '%';
+  });
+
+  // Initialize Animations
+  function initAnimations() {
+    // Hero animations
+    gsap.from('.profile-pic', {
+      scale: 0,
+      rotation: 180,
+      duration: 1,
+      ease: 'back.out(1.7)'
+    });
+
+    gsap.from('.hero-title', {
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      delay: 0.3,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.hero-subtitle', {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      delay: 0.6,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.hero-cta .btn', {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      delay: 0.9,
+      stagger: 0.2,
+      ease: 'power3.out'
+    });
+
+    // Floating shapes animation
+    gsap.to('.floating-shape', {
+      y: -30,
+      duration: 3,
+      ease: 'power2.inOut',
+      yoyo: true,
+      repeat: -1,
+      stagger: 0.5
+    });
+
+    // Navigation animation
+    gsap.from('.site-nav', {
+      y: -100,
+      opacity: 0,
+      duration: 1,
+      delay: 1.2,
+      ease: 'power3.out'
+    });
+
+    // Section animations
+    gsap.utils.toArray('.section').forEach((section) => {
+      gsap.from(section, {
+        y: 100,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+    });
+
+    // Glass cards animation
+    gsap.utils.toArray('.glass-card').forEach((card) => {
+      gsap.from(card, {
+        scale: 0.8,
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: 'back.out(1.7)',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+    });
+
+    // Project cards animation
+    gsap.utils.toArray('.project-card').forEach((card, i) => {
+      gsap.from(card, {
+        x: i % 2 === 0 ? -100 : 100,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // Hover animations
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+          y: -15,
+          scale: 1.02,
+          duration: 0.4,
+          ease: 'power2.out'
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          y: 0,
+          scale: 1,
+          duration: 0.4,
+          ease: 'power2.out'
+        });
+      });
+    });
+
+    // Skills animation
+    gsap.utils.toArray('.skill-category').forEach((skill, i) => {
+      gsap.from(skill, {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        delay: i * 0.1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: skill,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // Skill tags animation
+      gsap.from(skill.querySelectorAll('.skill-tag'), {
+        scale: 0,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: 'back.out(1.7)',
+        scrollTrigger: {
+          trigger: skill,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+    });
+
+    // Experience timeline animation
+    gsap.utils.toArray('.experience-item').forEach((item, i) => {
+      gsap.from(item, {
+        x: -100,
+        opacity: 0,
+        duration: 1,
+        delay: i * 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+    });
+
+    // Contact form animation
+    gsap.from('.contact-container', {
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.contact-container',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      }
+    });
+
+    // Form elements animation
+    gsap.from('.form-group', {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.contact-form',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      }
+    });
+
+    // Button hover animations
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+        gsap.to(btn, {
+          scale: 1.05,
+          y: -3,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, {
+          scale: 1,
+          y: 0,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+    });
+
+    // Parallax effect (use dedicated div instead of ::before)
+    gsap.to('.parallax-bg', {
+      y: -50,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: 'body',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+
+    // Text reveal animations
+    gsap.utils.toArray('.section-title').forEach(title => {
+      gsap.from(title, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: title,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+    });
+
+    gsap.utils.toArray('.section-subtitle').forEach(subtitle => {
+      gsap.from(subtitle, {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        delay: 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: subtitle,
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+    });
+  }
+
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        gsap.to(window, {
+          scrollTo: { y: target, offsetY: 100 },
+          duration: 1,
+          ease: 'power2.out'
+        });
+      }
+    });
+  });
+
+  // Form submission (demo only)
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formStatus = document.getElementById('form-status');
+    const submitBtn = this.querySelector('button[type="submit"]');
+
+    // Animate button
+    gsap.to(submitBtn, {
+      scale: 0.95,
+      duration: 0.1,
+      yoyo: true,
+      repeat: 1
+    });
+
+    // Show success message
+    formStatus.innerHTML = '<span style="color: var(--accent);">✓ Message sent (demo only)</span>';
+    gsap.from(formStatus, {
+      y: 20,
+      opacity: 0,
+      duration: 0.5,
+      ease: 'power3.out'
+    });
+
+    // Reset form
+    setTimeout(() => {
+      this.reset();
+      formStatus.innerHTML = '';
+    }, 3000);
+  });
+
+  // Mobile optimizations
+  if (window.innerWidth <= 768) {
+    cursor.style.display = 'none';
+    cursorFollower.style.display = 'none';
+
+    ScrollTrigger.defaults({ markers: false, once: true });
+  }
+
+  // Refresh ScrollTrigger on resize
+  window.addEventListener('resize', () => {
+    ScrollTrigger.refresh();
+  });
+</script>
 
 </html>
-
-
-
-
